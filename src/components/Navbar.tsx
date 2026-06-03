@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Compass, Menu, X, Calendar, User, Compass as CompassIcon, ChevronRight, Sun, Moon } from "lucide-react";
 import { useBooking } from "@/context/BookingContext";
 import { useTheme } from "@/context/ThemeContext";
+import { ShinyText } from "@/components/ShinyText";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -14,8 +15,6 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { selectedDestination } = useBooking();
   const { theme, toggleTheme } = useTheme();
-  
-  const isHeroActive = pathname === "/" && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +45,7 @@ export const Navbar: React.FC = () => {
           className={`w-full max-w-7xl flex items-center justify-between px-6 py-3.5 rounded-full transition-all duration-500 ${
             scrolled
               ? "glass-panel bg-white/75 dark:bg-primary/75 py-2.5 shadow-2xl border-slate-200/50 dark:border-white/10 max-w-5xl"
-              : `bg-transparent border ${isHeroActive ? "border-white/10" : "border-slate-200/50 dark:border-white/10"}`
+              : "backdrop-blur-md bg-white/35 dark:bg-slate-950/20 border border-slate-200/30 dark:border-white/5 shadow-sm"
           }`}
         >
           {/* Logo Brand */}
@@ -56,9 +55,7 @@ export const Navbar: React.FC = () => {
               <div className="absolute -inset-1 rounded-full border border-secondary/20 animate-ping opacity-30" />
             </div>
             <div className="flex flex-col">
-              <span className={`font-serif text-base tracking-widest font-bold group-hover:text-secondary transition-colors duration-300 ${
-                isHeroActive ? "text-white" : "text-slate-800 dark:text-white"
-              }`}>
+              <span className="font-serif text-base tracking-widest font-bold text-slate-800 dark:text-white group-hover:text-secondary transition-colors duration-300">
                 HORIZON LUXE
               </span>
               <span className="text-[9px] tracking-widest text-accent font-medium uppercase -mt-1 font-sans">
@@ -68,27 +65,25 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative text-sm tracking-wider font-sans font-medium transition-colors duration-300 ${
-                    isHeroActive
-                      ? "text-slate-200 hover:text-white"
-                      : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-                  }`}
+                  className="relative py-2.5 px-3.5 text-sm tracking-wider font-sans font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors duration-300"
                 >
-                  {link.name}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavIndicator"
-                      className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
+                  <span className="relative inline-block">
+                    {link.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavIndicator"
+                        className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -99,9 +94,7 @@ export const Navbar: React.FC = () => {
             {/* Luxury Theme Toggler */}
             <button
               onClick={toggleTheme}
-              className={`p-2 hover:text-accent dark:hover:text-accent transition-all duration-300 relative cursor-pointer focus:outline-none ${
-                isHeroActive ? "text-slate-200" : "text-slate-600 dark:text-slate-300"
-              }`}
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-accent dark:hover:text-accent transition-all duration-300 relative cursor-pointer focus:outline-none"
               aria-label={`Toggle theme to ${theme === "dark" ? "light" : "dark"}`}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -115,7 +108,7 @@ export const Navbar: React.FC = () => {
                   {theme === "dark" ? (
                     <Sun className="w-5 h-5 text-amber-400" />
                   ) : (
-                    <Moon className={`w-5 h-5 ${isHeroActive ? "text-white" : "text-slate-700"}`} />
+                    <Moon className="w-5 h-5 text-slate-700 dark:text-slate-300" />
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -123,9 +116,7 @@ export const Navbar: React.FC = () => {
 
             <Link
               href="/dashboard"
-              className={`p-2 hover:text-accent dark:hover:text-accent transition-colors duration-300 relative ${
-                isHeroActive ? "text-slate-200" : "text-slate-600 dark:text-slate-300"
-              }`}
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-accent dark:hover:text-accent transition-colors duration-300 relative"
               aria-label="Trip Planner Portal"
             >
               <User className="w-5 h-5" />
@@ -135,7 +126,7 @@ export const Navbar: React.FC = () => {
               href={selectedDestination ? "/checkout" : "/destinations"}
               className="magnetic-btn relative flex items-center gap-2 px-5 py-2.5 text-xs font-sans tracking-widest font-bold uppercase rounded-full bg-gradient-to-r from-secondary to-secondary-light text-white shadow-[0_4px_20px_rgba(13,148,136,0.3)] hover:shadow-[0_4px_25px_rgba(13,148,136,0.5)] transition-all duration-300"
             >
-              <span>{selectedDestination ? "Complete Booking" : "Book Journey"}</span>
+              <ShinyText text={selectedDestination ? "Complete Booking" : "Book Journey"} speed={5} className="text-white font-bold" />
               <ChevronRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               {selectedDestination && (
                 <span className="absolute -top-1.5 -right-1.5 w-5.5 h-5.5 flex items-center justify-center text-[10px] bg-accent text-primary font-extrabold rounded-full border-2 border-white dark:border-[#090d16] animate-bounce">
@@ -150,9 +141,7 @@ export const Navbar: React.FC = () => {
             {/* Theme toggle for mobile */}
             <button
               onClick={toggleTheme}
-              className={`p-2 hover:text-accent dark:hover:text-accent transition-colors duration-300 relative cursor-pointer focus:outline-none ${
-                isHeroActive ? "text-slate-200" : "text-slate-600 dark:text-slate-300"
-              }`}
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-accent dark:hover:text-accent transition-colors duration-300 relative cursor-pointer focus:outline-none"
               aria-label={`Toggle theme to ${theme === "dark" ? "light" : "dark"}`}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -166,7 +155,7 @@ export const Navbar: React.FC = () => {
                   {theme === "dark" ? (
                     <Sun className="w-5 h-5 text-amber-400" />
                   ) : (
-                    <Moon className={`w-5 h-5 ${isHeroActive ? "text-white" : "text-slate-700"}`} />
+                    <Moon className="w-5 h-5 text-slate-700 dark:text-slate-300" />
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -185,11 +174,7 @@ export const Navbar: React.FC = () => {
             
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 focus:outline-none ${
-                isHeroActive
-                  ? "text-slate-200 hover:text-white"
-                  : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              className="p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
