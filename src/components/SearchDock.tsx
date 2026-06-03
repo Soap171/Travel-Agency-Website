@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { MapPin, Calendar, Users, Search, X } from "lucide-react";
 import { useSearchFilters } from "@/hooks/useSearchFilters";
 import { useTheme } from "@/context/ThemeContext";
+import { ShinyText } from "@/components/ShinyText";
 
 interface SearchDockProps {
   variant?: "inline" | "floating";
@@ -133,7 +134,7 @@ export const SearchDock: React.FC<SearchDockProps> = ({ variant = "inline" }) =>
           className="w-full lg:w-auto px-8 py-4 lg:py-4.5 rounded-2xl bg-gradient-to-r from-secondary to-secondary-light text-white font-sans font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:shadow-[0_4px_20px_rgba(13,148,136,0.4)] transition-all duration-300 shadow-md group cursor-pointer"
         >
           <Search className="w-4 h-4 group-hover:scale-110 transition-transform" />
-          <span>Curate Expedition</span>
+          <ShinyText text="Curate Expedition" speed={5} className="text-white font-bold tracking-widest" />
         </button>
       </div>
     </form>

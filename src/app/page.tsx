@@ -8,6 +8,7 @@ import { ArrowRight, Star } from "lucide-react";
 import { SearchDock } from "@/components/SearchDock";
 import { destinationsData } from "@/data/destinations";
 import { SplashCursor } from "@/components/SplashCursor";
+import { BlurText } from "@/components/BlurText";
 
 const travelStyles = [
   {
@@ -85,17 +86,18 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6 max-w-4xl leading-tight"
-          >
-            The Ultimate Journey <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-light via-accent to-secondary">
-              Begins in Solitude
-            </span>
-          </motion.h1>
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-4xl leading-tight">
+            <BlurText
+              text="The Ultimate Journey"
+              delay={0.2}
+              className="text-slate-900 dark:text-white block"
+            />
+            <BlurText
+              text="Begins in Solitude"
+              delay={0.6}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-light via-accent to-secondary block"
+            />
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

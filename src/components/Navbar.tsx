@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Compass, Menu, X, Calendar, User, Compass as CompassIcon, ChevronRight, Sun, Moon } from "lucide-react";
 import { useBooking } from "@/context/BookingContext";
 import { useTheme } from "@/context/ThemeContext";
+import { ShinyText } from "@/components/ShinyText";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -125,7 +126,7 @@ export const Navbar: React.FC = () => {
               href={selectedDestination ? "/checkout" : "/destinations"}
               className="magnetic-btn relative flex items-center gap-2 px-5 py-2.5 text-xs font-sans tracking-widest font-bold uppercase rounded-full bg-gradient-to-r from-secondary to-secondary-light text-white shadow-[0_4px_20px_rgba(13,148,136,0.3)] hover:shadow-[0_4px_25px_rgba(13,148,136,0.5)] transition-all duration-300"
             >
-              <span>{selectedDestination ? "Complete Booking" : "Book Journey"}</span>
+              <ShinyText text={selectedDestination ? "Complete Booking" : "Book Journey"} speed={5} className="text-white font-bold" />
               <ChevronRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               {selectedDestination && (
                 <span className="absolute -top-1.5 -right-1.5 w-5.5 h-5.5 flex items-center justify-center text-[10px] bg-accent text-primary font-extrabold rounded-full border-2 border-white dark:border-[#090d16] animate-bounce">

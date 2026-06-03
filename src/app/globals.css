@@ -25,6 +25,16 @@
   --ease-saccade: cubic-bezier(0.25, 0.1, 0.25, 1);
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-shine: shine 6s linear infinite;
+  
+  @keyframes shine {
+    from {
+      background-position: 200% center;
+    }
+    to {
+      background-position: -200% center;
+    }
+  }
 }
 
 :root {

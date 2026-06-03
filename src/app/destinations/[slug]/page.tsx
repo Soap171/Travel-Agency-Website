@@ -3,13 +3,13 @@
 import React, { use, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Clock, Star, Coffee, Home, CheckCircle2, ChevronDown, Sparkles, Navigation, UserCheck } from "lucide-react";
 import { destinationsData } from "@/data/destinations";
 import { useBookingEngine } from "@/hooks/useBookingEngine";
 
 interface PageProps {
-  params: React.Usable<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default function DestinationDetail({ params }: PageProps) {
@@ -162,48 +162,66 @@ export default function DestinationDetail({ params }: PageProps) {
                       </button>
 
                       {/* Timeline Card Body */}
-                      <div className="glass-panel p-5 rounded-2xl border-slate-200 dark:border-white/5 bg-white/40 dark:bg-slate-950/10">
-                        <div
+                      <div className={`glass-panel rounded-2xl border transition-all duration-300 overflow-hidden ${
+                        isExpanded
+                          ? "bg-white/60 dark:bg-slate-950/20 border-secondary/30 shadow-md shadow-secondary/5"
+                          : "bg-white/40 dark:bg-slate-950/10 border-slate-200 dark:border-white/5 hover:border-slate-350 dark:hover:border-white/10 hover:bg-white/50 dark:hover:bg-slate-950/15"
+                      }`}>
+                        <button
                           onClick={() => setExpandedDay(isExpanded ? null : day.day)}
-                          className="flex items-center justify-between cursor-pointer"
+                          className="w-full flex items-center justify-between p-5 text-left cursor-pointer focus:outline-none group select-none"
+                          aria-expanded={isExpanded}
                         >
-                          <h3 className="font-serif text-base font-bold text-slate-800 dark:text-white group-hover:text-secondary transition-colors">
+                          <h3 className={`font-serif text-base font-bold transition-colors duration-300 ${
+                            isExpanded ? "text-secondary" : "text-slate-800 dark:text-white group-hover:text-secondary"
+                          }`}>
                             Day {day.day}: {day.title}
                           </h3>
-                          <ChevronDown
-                            className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${
-                              isExpanded ? "rotate-180 text-secondary" : ""
-                            }`}
-                          />
-                        </div>
+                          <div className={`flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300 ${
+                            isExpanded
+                              ? "bg-secondary/10 border-secondary text-secondary"
+                              : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-white/10 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 group-hover:border-slate-300 dark:group-hover:border-white/20"
+                          }`}>
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-300 ${
+                                isExpanded ? "rotate-180" : ""
+                              }`}
+                            />
+                          </div>
+                        </button>
 
-                        {isExpanded && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                            className="mt-4 flex flex-col gap-4 border-t border-slate-150 dark:border-white/5 pt-4 text-xs font-sans text-slate-550 dark:text-slate-400 leading-relaxed"
-                          >
-                            <p>{day.description}</p>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 border-t border-slate-150 dark:border-white/5 pt-3">
-                              <div className="flex items-center gap-2">
-                                <Home className="w-4 h-4 text-secondary flex-shrink-0" />
-                                <div>
-                                  <span className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">Accommodation</span>
-                                  <span className="text-slate-800 dark:text-white font-medium">{day.accommodation}</span>
+                        <AnimatePresence initial={false}>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-5 pb-5 flex flex-col gap-4 border-t border-slate-150 dark:border-white/5 pt-4 text-xs font-sans text-slate-550 dark:text-slate-400 leading-relaxed">
+                                <p>{day.description}</p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 border-t border-slate-150 dark:border-white/5 pt-3">
+                                  <div className="flex items-center gap-2">
+                                    <Home className="w-4 h-4 text-secondary flex-shrink-0" />
+                                    <div>
+                                      <span className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">Accommodation</span>
+                                      <span className="text-slate-800 dark:text-white font-medium">{day.accommodation}</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Coffee className="w-4 h-4 text-secondary flex-shrink-0" />
+                                    <div>
+                                      <span className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">Catering</span>
+                                      <span className="text-slate-800 dark:text-white font-medium">{day.meals}</span>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                              <div className="flex items-center gap-2">
-                                <Coffee className="w-4 h-4 text-secondary flex-shrink-0" />
-                                <div>
-                                  <span className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">Catering</span>
-                                  <span className="text-slate-800 dark:text-white font-medium">{day.meals}</span>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
                   );
@@ -226,17 +244,17 @@ export default function DestinationDetail({ params }: PageProps) {
                 {destination.excursions.map((ex) => {
                   const isSel = isExcursionSelected(ex.id);
                   return (
-                    <div
+                    <button
                       key={ex.id}
                       onClick={() => toggleExcursion(ex)}
-                      className={`flex flex-col md:flex-row md:items-center justify-between p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                      className={`w-full text-left flex flex-col md:flex-row md:items-center justify-between p-5 rounded-2xl border transition-all duration-300 cursor-pointer focus:outline-none group ${
                         isSel
-                          ? "bg-secondary/5 border-secondary/50 shadow-md shadow-secondary/5"
-                          : "bg-white/40 dark:bg-slate-950/20 border-slate-200 dark:border-white/5 hover:border-slate-350 dark:hover:border-white/10"
+                          ? "bg-secondary/[0.03] dark:bg-secondary/[0.02] border-secondary/40 shadow-md shadow-secondary/5"
+                          : "bg-white/40 dark:bg-slate-950/10 border-slate-200 dark:border-white/5 hover:border-secondary/20 dark:hover:border-secondary/25 hover:bg-white/50 dark:hover:bg-slate-950/15 hover:shadow-lg hover:shadow-secondary/5 hover:scale-[1.01]"
                       }`}
                     >
                       <div className="flex items-start gap-4">
-                        <div className={`mt-2.5 rounded-full p-0.5 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-600"} flex-shrink-0`}>
+                        <div className={`mt-2.5 rounded-full p-0.5 transition-colors duration-300 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-650 group-hover:text-slate-550"} flex-shrink-0`}>
                           <CheckCircle2 className="w-5 h-5 fill-current text-white dark:text-[#090d16]" />
                         </div>
                         
@@ -247,13 +265,15 @@ export default function DestinationDetail({ params }: PageProps) {
                             alt={ex.name}
                             fill
                             sizes="64px"
-                            className="object-cover"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                         </div>
 
                         <div className="flex flex-col">
                           <div className="flex items-center gap-2 flex-wrap leading-none">
-                            <span className="font-serif text-sm font-bold text-slate-800 dark:text-white leading-none">{ex.name}</span>
+                            <span className={`font-serif text-sm font-bold leading-none transition-colors duration-300 ${
+                              isSel ? "text-secondary" : "text-slate-800 dark:text-white group-hover:text-secondary"
+                            }`}>{ex.name}</span>
                             <span className="text-[9px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-250 dark:border-white/5">
                               {ex.duration}
                             </span>
@@ -268,7 +288,7 @@ export default function DestinationDetail({ params }: PageProps) {
                         <span className="text-[8px] text-slate-500 uppercase tracking-widest font-bold">Additional Fare</span>
                         <span className="text-sm font-bold text-accent">${ex.price.toLocaleString()} <span className="text-[10px] text-slate-500 font-normal">/ guest</span></span>
                       </div>
-                    </div>
+                    </button>
                   );
                 })}
               </div>
