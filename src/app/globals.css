@@ -33,30 +33,30 @@
   --accent: 234 179 8;
   --radius-premium: 1.25rem;
   
-  /* Light Mode values */
-  --background: #f8fafc;
+  /* Light Mode values - Optimized for readability, contrast, and premium slate neutral vibes */
+  --background: #f1f5f9;
   --foreground: #0f172a;
-  --bg-surface-val: #ffffff;
+  --bg-surface-val: #f8fafc;
   
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --card-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
-  --text-muted: #64748b;
-  --input-bg: rgba(255, 255, 255, 0.9);
-  --input-border: rgba(15, 23, 42, 0.1);
+  --card-bg: rgba(248, 250, 252, 0.85);
+  --card-border: rgba(15, 23, 42, 0.12);
+  --card-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+  --text-muted: #475569;
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-border: rgba(15, 23, 42, 0.12);
   --input-color: #0f172a;
   
-  --glass-panel-bg: rgba(255, 255, 255, 0.7);
-  --glass-panel-border: rgba(15, 23, 42, 0.06);
-  --glass-panel-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  --glass-panel-bg: rgba(241, 245, 249, 0.85);
+  --glass-panel-border: rgba(15, 23, 42, 0.1);
+  --glass-panel-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
   
   --vignette-color-inner: rgba(255, 255, 255, 0);
-  --vignette-color-outer: rgba(248, 250, 252, 0.85);
-  --hero-grad-start: rgba(248, 250, 252, 0.4);
-  --hero-grad-end: rgba(248, 250, 252, 1);
+  --vignette-color-outer: rgba(241, 245, 249, 0.35);
+  --hero-grad-start: rgba(241, 245, 249, 0.2);
+  --hero-grad-end: rgba(241, 245, 249, 1);
   
-  --scroll-track: #f1f5f9;
-  --scroll-thumb: rgba(15, 23, 42, 0.15);
+  --scroll-track: #e2e8f0;
+  --scroll-thumb: rgba(15, 23, 42, 0.2);
 }
 
 .dark {

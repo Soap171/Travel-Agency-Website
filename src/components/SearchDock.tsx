@@ -47,7 +47,7 @@ export const SearchDock: React.FC<SearchDockProps> = ({ variant = "inline" }) =>
     >
       <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-1.5 w-full">
         {/* Field 1: Destination Search */}
-        <div className="flex items-center gap-3.5 px-4 py-3 bg-slate-100 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15">
+        <div className="flex items-center gap-3.5 px-4 py-3 bg-white/95 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15 shadow-sm">
           <MapPin className="w-5 h-5 text-secondary flex-shrink-0" />
           <div className="flex-1 flex flex-col items-start leading-none min-w-0">
             <label htmlFor="destInput" className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">
@@ -77,7 +77,7 @@ export const SearchDock: React.FC<SearchDockProps> = ({ variant = "inline" }) =>
         <div className="hidden lg:block w-px h-10 bg-slate-200 dark:bg-white/10" />
 
         {/* Field 2: Dates Selector */}
-        <div className="flex items-center gap-3.5 px-4 py-3 bg-slate-100 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15">
+        <div className="flex items-center gap-3.5 px-4 py-3 bg-white/95 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15 shadow-sm">
           <Calendar className="w-5 h-5 text-secondary flex-shrink-0" />
           <div className="flex-1 flex flex-col items-start leading-none w-full">
             <label htmlFor="dateInput" className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">
@@ -98,7 +98,7 @@ export const SearchDock: React.FC<SearchDockProps> = ({ variant = "inline" }) =>
         <div className="hidden lg:block w-px h-10 bg-slate-200 dark:bg-white/10" />
 
         {/* Field 3: Guest Selector */}
-        <div className="flex items-center gap-3.5 px-4 py-3 bg-slate-100 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-r-2xl lg:rounded-l-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15 justify-between">
+        <div className="flex items-center gap-3.5 px-4 py-3 bg-white/95 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-r-2xl lg:rounded-l-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15 justify-between shadow-sm">
           <div className="flex items-center gap-3.5">
             <Users className="w-5 h-5 text-secondary flex-shrink-0" />
             <div className="flex flex-col items-start leading-none">

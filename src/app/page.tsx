@@ -59,14 +59,14 @@ export default function Home() {
             fill
             priority
             quality={90}
-            className="object-cover object-center scale-105 animate-pulse-slow opacity-90 dark:opacity-80"
+            className="object-cover object-center scale-105 animate-pulse-slow opacity-95 dark:opacity-80"
           />
-          {/* Always dark tint overlay */}
-          <div className="absolute inset-0 bg-slate-950/45 dark:bg-slate-950/30 z-10" />
-          {/* Always dark vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(9,13,22,0.75)_100%)] z-10" />
-          {/* Bottom gradient transition to page background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background-luxe via-background-luxe/15 to-transparent z-10" />
+          {/* Theme-aware tint overlay */}
+          <div className="absolute inset-0 bg-white/5 dark:bg-slate-950/30 z-10" />
+          {/* Theme-aware vignette */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(248,250,252,0.3)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
+          {/* Bottom gradient transition to page background (only covering bottom quarter to prevent washing out the image) */}
+          <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-background-luxe to-transparent z-10" />
         </div>
 
         <SplashCursor isAbsolute />
@@ -79,8 +79,8 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-md mb-6"
           >
-            <Star className="w-3.5 h-3.5 text-accent fill-accent" />
-            <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-accent">
+            <Star className="w-3.5 h-3.5 text-secondary fill-secondary dark:text-accent dark:fill-accent" />
+            <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-secondary dark:text-accent">
               Introducing Curated Luxe Safaris
             </span>
           </motion.div>
@@ -89,7 +89,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 max-w-4xl leading-tight"
+            className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6 max-w-4xl leading-tight"
           >
             The Ultimate Journey <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-light via-accent to-secondary">
@@ -101,7 +101,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-base md:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl mb-12"
+            className="text-base md:text-lg text-slate-700 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mb-12"
           >
             Escape the ordinary. Immerse yourself in hand-curated luxury travel experiences, bespoke international holiday packages, and seamless itinerary booking.
           </motion.p>
