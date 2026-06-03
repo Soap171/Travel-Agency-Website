@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0f172a;
+  --color-secondary: #0d9488;
+  --color-accent: #eab308;
+  --color-primary-light: #1e293b;
+  --color-secondary-light: #14b8a6;
+  --color-accent-light: #f59e0b;
+  
+  --color-background-luxe: var(--background);
+  --color-foreground-luxe: var(--foreground);
+  --color-card-bg-luxe: var(--card-bg);
+  --color-card-border-luxe: var(--card-border);
+  --color-text-muted-luxe: var(--text-muted);
+  --color-bg-surface-luxe: var(--bg-surface-val);
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  --radius-premium: 1.25rem;
+  
+  --ease-saccade: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+:root {
+  --primary: 15 23 42;
+  --secondary: 13 148 136;
+  --accent: 234 179 8;
+  --radius-premium: 1.25rem;
+  
+  /* Light Mode values */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --bg-surface-val: #ffffff;
+  
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  --text-muted: #64748b;
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(15, 23, 42, 0.1);
+  --input-color: #0f172a;
+  
+  --glass-panel-bg: rgba(255, 255, 255, 0.7);
+  --glass-panel-border: rgba(15, 23, 42, 0.06);
+  --glass-panel-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  
+  --vignette-color-inner: rgba(255, 255, 255, 0);
+  --vignette-color-outer: rgba(248, 250, 252, 0.85);
+  --hero-grad-start: rgba(248, 250, 252, 0.4);
+  --hero-grad-end: rgba(248, 250, 252, 1);
+  
+  --scroll-track: #f1f5f9;
+  --scroll-thumb: rgba(15, 23, 42, 0.15);
+}
+
+.dark {
+  /* Dark Mode values (original cinematic design) */
+  --background: #090d16;
+  --foreground: #f8fafc;
+  --bg-surface-val: #0f172a;
+  
+  --card-bg: rgba(15, 23, 42, 0.65);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --text-muted: #94a3b8;
+  --input-bg: rgba(15, 23, 42, 0.5);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-color: #ffffff;
+  
+  --glass-panel-bg: rgba(15, 23, 42, 0.65);
+  --glass-panel-border: rgba(255, 255, 255, 0.08);
+  --glass-panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --vignette-color-inner: rgba(15, 23, 42, 0);
+  --vignette-color-outer: rgba(9, 13, 22, 0.9);
+  --hero-grad-start: rgba(9, 13, 22, 0.4);
+  --hero-grad-end: rgba(9, 13, 22, 1);
+  
+  --scroll-track: #090d16;
+  --scroll-thumb: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Transition system for smooth Theme toggling */
+body, header, footer, nav, aside, section, article, .glass-panel, .glass-input, input, button {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-panel-border);
+  box-shadow: var(--glass-panel-shadow);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-input {
+  background: var(--input-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--input-border);
+  color: var(--input-color);
+}
+
+.glass-input:focus {
+  border-color: rgba(13, 148, 136, 0.6);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+
+/* Cinematic Vignette Overlay */
+.cinematic-vignette {
+  background: radial-gradient(circle, var(--vignette-color-inner) 40%, var(--vignette-color-outer) 100%);
+}
+
+.hero-gradient {
+  background: linear-gradient(to bottom, var(--hero-grad-start), var(--hero-grad-end));
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 148, 136, 0.5);
+}
+
+/* Hardware accelerated transform utility */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Magnetic CTA Hover Boundaries */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+/* Map pin pulse */
+.map-pin-pulse {
+  position: relative;
+}
+
+.map-pin-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(13, 148, 136, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
