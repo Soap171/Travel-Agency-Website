@@ -300,27 +300,29 @@ export default function CheckoutWizard() {
                             : "bg-white/40 dark:bg-slate-950/20 border-slate-200 dark:border-white/5 hover:border-slate-350 dark:hover:border-white/10"
                         }`}
                       >
-                        <div className="flex items-start gap-4">
-                          <div className={`mt-2.5 rounded-full p-0.5 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-600"} flex-shrink-0`}>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <div className={`mt-1.5 rounded-full p-0.5 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-600"} flex-shrink-0`}>
                             <Check className="w-4 h-4" />
                           </div>
                           
-                          {/* Excursion Card Image */}
-                          <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
-                            <Image
-                              src={ex.image}
-                              alt={ex.name}
-                              fill
-                              sizes="64px"
-                              className="object-cover transition-transform duration-500 hover:scale-105"
-                            />
-                          </div>
+                          <div className="flex flex-col sm:flex-row items-start gap-3.5">
+                            {/* Excursion Card Image */}
+                            <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
+                              <Image
+                                src={ex.image}
+                                alt={ex.name}
+                                fill
+                                sizes="64px"
+                                className="object-cover transition-transform duration-500 hover:scale-105"
+                              />
+                            </div>
 
-                          <div className="flex flex-col">
-                            <span className="font-serif text-sm font-bold text-slate-800 dark:text-white">{ex.name}</span>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 font-sans mt-1 leading-relaxed max-w-md">
-                              {ex.description}
-                            </p>
+                            <div className="flex flex-col">
+                              <span className="font-serif text-sm font-bold text-slate-800 dark:text-white">{ex.name}</span>
+                              <p className="text-xs text-slate-600 dark:text-slate-400 font-sans mt-1 leading-relaxed max-w-md">
+                                {ex.description}
+                              </p>
+                            </div>
                           </div>
                         </div>
 
@@ -396,7 +398,7 @@ export default function CheckoutWizard() {
                   </div>
 
                   <div className="flex flex-col gap-4 relative z-10">
-                    <span className="font-mono text-lg md:text-xl tracking-widest font-semibold text-white">
+                    <span className="font-mono text-sm sm:text-base md:text-xl tracking-widest font-semibold text-white">
                       {paymentInfo.cardNumber || "•••• •••• •••• ••••"}
                     </span>
 
@@ -534,12 +536,12 @@ export default function CheckoutWizard() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="glass-panel p-6 md:p-8 rounded-3xl border-secondary/20 bg-white/40 dark:bg-slate-950/15 flex flex-col items-center text-center gap-6"
               >
-                <div className="relative w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center border border-secondary/20 shadow-xl shadow-secondary/5 mb-2">
+                <div className="relative w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center border border-secondary/20 shadow-xl shadow-secondary/5 mb-2 no-print">
                   <ShieldCheck className="w-8 h-8 animate-pulse" />
                   <div className="absolute -inset-2 rounded-full border border-secondary/20 animate-ping opacity-25" />
                 </div>
 
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 no-print">
                   <span className="text-xs uppercase tracking-widest text-accent font-bold">Transaction Confirmed</span>
                   <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                     Expedition Escrow Secure
@@ -550,7 +552,7 @@ export default function CheckoutWizard() {
                 </div>
 
                 {/* Printable receipt card */}
-                <div className="w-full max-w-md bg-slate-100 dark:bg-slate-950/50 border border-slate-200 dark:border-white/5 rounded-2xl p-6 text-left flex flex-col gap-4 font-sans text-xs">
+                <div className="print-card-luxe w-full max-w-md bg-slate-100 dark:bg-slate-950/50 border border-slate-200 dark:border-white/5 rounded-2xl p-6 text-left flex flex-col gap-4 font-sans text-xs">
                   <div className="flex justify-between items-center border-b border-slate-200 dark:border-white/5 pb-3">
                     <span className="font-serif font-bold text-slate-900 dark:text-white tracking-wider">HORIZON LUXE JOURNEYS</span>
                     <span className="text-[10px] text-slate-500 font-mono">{confirmedId}</span>
@@ -579,7 +581,7 @@ export default function CheckoutWizard() {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3.5 w-full max-w-xs mt-2">
+                <div className="flex flex-col sm:flex-row gap-3.5 w-full max-w-xs mt-2 no-print">
                   <button
                     onClick={() => router.push("/dashboard")}
                     className="flex-1 py-3 bg-secondary hover:bg-secondary-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
@@ -598,7 +600,7 @@ export default function CheckoutWizard() {
           </div>
 
           {/* RIGHT COLUMN: Booking Summary Panel */}
-          <aside className="glass-panel p-6 rounded-3xl border-slate-200 dark:border-white/5 bg-white/40 dark:bg-slate-950/10 flex flex-col gap-6">
+          <aside className="glass-panel p-6 rounded-3xl border-slate-200 dark:border-white/5 bg-white/40 dark:bg-slate-950/10 flex flex-col gap-6 no-print">
             <div className="border-b border-slate-200 dark:border-white/5 pb-4">
               <span className="text-[8px] text-slate-500 uppercase tracking-widest font-bold block mb-1">
                 Expedition Invoice

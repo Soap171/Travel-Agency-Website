@@ -223,3 +223,62 @@ body, header, footer, nav, aside, section, article, .glass-panel, .glass-input, 
     opacity: 0;
   }
 }
+
+/* Premium Print System */
+@media print {
+  /* Reset background and layout for printer */
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Hide all UI elements */
+  header,
+  footer,
+  nav,
+  aside,
+  button,
+  .no-print,
+  .no-print-area {
+    display: none !important;
+  }
+  
+  /* Center and format the print-card-luxe ticket */
+  .print-card-luxe {
+    display: block !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    border: 2px solid #000000 !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    padding: 30px !important;
+    box-sizing: border-box !important;
+  }
+
+  .print-card-luxe * {
+    color: #000000 !important;
+    background: transparent !important;
+    border-color: #000000 !important;
+  }
+
+  .print-card-luxe img {
+    display: block !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+  }
+
+  .print-card-luxe .border-dashed {
+    border-color: #000000 !important;
+  }
+}

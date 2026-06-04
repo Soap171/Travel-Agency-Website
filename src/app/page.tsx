@@ -51,21 +51,23 @@ export default function Home() {
   return (
     <div className="relative min-h-screen pb-16 flex flex-col bg-background-luxe text-foreground-luxe">
       {/* 1. HERO SECTION */}
-      <section className="relative h-[95vh] md:h-screen w-full flex items-center justify-center px-4 overflow-hidden">
+      <section className="relative min-h-[95vh] lg:h-screen w-full flex items-center justify-center px-4 py-12 sm:py-16 lg:py-0 overflow-hidden">
         {/* Background panoramic image with deep overlay */}
-        <div className="absolute inset-0 bg-[#090d16] z-0">
+        <div className="absolute inset-0 bg-background-luxe z-0 transition-colors duration-500">
           <Image
             src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?auto=format&fit=crop&q=80&w=1920"
             alt="Cinematic Alpine Peak Panoramic Background"
             fill
             priority
             quality={90}
-            className="object-cover object-center scale-105 animate-pulse-slow opacity-95 dark:opacity-80"
+            className="object-cover object-center scale-105 animate-pulse-slow opacity-35 dark:opacity-40 transition-opacity duration-500"
           />
           {/* Theme-aware tint overlay */}
-          <div className="absolute inset-0 bg-white/5 dark:bg-slate-950/30 z-10" />
+          <div className="absolute inset-0 bg-amber-950/[0.03] dark:bg-slate-950/30 z-10" />
           {/* Theme-aware vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(248,250,252,0.3)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_45%,rgba(var(--primary),0.35)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
+          {/* Center-focused backdrop radial shield to eliminate map visual noise under text */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--background)_10%,transparent_80%)] dark:bg-[radial-gradient(circle_at_center,rgba(9,13,22,0.6)_15%,transparent_80%)] z-10 opacity-60 dark:opacity-75 pointer-events-none" />
           {/* Bottom gradient transition to page background (only covering bottom quarter to prevent washing out the image) */}
           <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-background-luxe to-transparent z-10" />
         </div>
@@ -73,12 +75,12 @@ export default function Home() {
         <SplashCursor isAbsolute />
 
         {/* Hero Content */}
-        <div className="relative max-w-5xl mx-auto text-center z-20 flex flex-col items-center mt-20">
+        <div className="relative w-full max-w-5xl mx-auto text-center z-20 flex flex-col items-center mt-12 sm:mt-16 lg:mt-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-md mb-6"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-md mb-4 sm:mb-6"
           >
             <Star className="w-3.5 h-3.5 text-secondary fill-secondary dark:text-accent dark:fill-accent" />
             <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-secondary dark:text-accent">
@@ -86,7 +88,7 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-4xl leading-tight">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 max-w-4xl leading-tight">
             <BlurText
               text="The Ultimate Journey"
               delay={0.2}
@@ -103,7 +105,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-base md:text-lg text-slate-700 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mb-12"
+            className="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mb-8 sm:mb-12"
           >
             Escape the ordinary. Immerse yourself in hand-curated luxury travel experiences, bespoke international holiday packages, and seamless itinerary booking.
           </motion.p>
@@ -119,7 +121,7 @@ export default function Home() {
         </div>
 
         {/* Floating Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 z-20 pointer-events-none">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 z-20 pointer-events-none hidden lg:flex">
           <span className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Scroll to Discover</span>
           <div className="w-1.5 h-6 rounded-full border border-slate-400 flex justify-center p-0.5">
             <div className="w-0.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
@@ -202,7 +204,7 @@ export default function Home() {
               </div>
 
               {/* Card Body */}
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-4 sm:p-6 flex flex-col flex-grow">
                 <span className="text-[10px] font-sans text-slate-500 uppercase tracking-widest font-bold mb-2">
                   {dest.style} &bull; {dest.durationDays} Days
                 </span>
@@ -261,7 +263,7 @@ export default function Home() {
             {travelStyles.map((style, idx) => (
               <div
                 key={idx}
-                className="group relative h-[380px] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-end p-6 border border-slate-200 dark:border-white/5"
+                className="group relative h-[380px] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-end p-5 sm:p-6 border border-slate-200 dark:border-white/5"
               >
                 <Image
                   src={style.image}
