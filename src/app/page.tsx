@@ -53,19 +53,19 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="relative h-[95vh] md:h-screen w-full flex items-center justify-center px-4 overflow-hidden">
         {/* Background panoramic image with deep overlay */}
-        <div className="absolute inset-0 bg-[#090d16] z-0">
+        <div className="absolute inset-0 bg-background-luxe z-0 transition-colors duration-500">
           <Image
             src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?auto=format&fit=crop&q=80&w=1920"
             alt="Cinematic Alpine Peak Panoramic Background"
             fill
             priority
             quality={90}
-            className="object-cover object-center scale-105 animate-pulse-slow opacity-95 dark:opacity-80"
+            className="object-cover object-center scale-105 animate-pulse-slow opacity-20 dark:opacity-40 transition-opacity duration-500"
           />
           {/* Theme-aware tint overlay */}
           <div className="absolute inset-0 bg-white/5 dark:bg-slate-950/30 z-10" />
           {/* Theme-aware vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(248,250,252,0.3)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(var(--primary),0.3)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
           {/* Bottom gradient transition to page background (only covering bottom quarter to prevent washing out the image) */}
           <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-background-luxe to-transparent z-10" />
         </div>
