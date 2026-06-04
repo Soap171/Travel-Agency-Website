@@ -60,14 +60,14 @@ export default function Home() {
             fill
             priority
             quality={90}
-            className="object-cover object-center scale-105 animate-pulse-slow opacity-20 dark:opacity-40 transition-opacity duration-500"
+            className="object-cover object-center scale-105 animate-pulse-slow opacity-35 dark:opacity-40 transition-opacity duration-500"
           />
           {/* Theme-aware tint overlay */}
-          <div className="absolute inset-0 bg-white/5 dark:bg-slate-950/30 z-10" />
+          <div className="absolute inset-0 bg-amber-950/[0.03] dark:bg-slate-950/30 z-10" />
           {/* Theme-aware vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(var(--primary),0.3)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_45%,rgba(var(--primary),0.35)_100%)] dark:bg-[radial-gradient(circle,transparent_15%,rgba(9,13,22,0.8)_100%)] z-10" />
           {/* Center-focused backdrop radial shield to eliminate map visual noise under text */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--background)_20%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(9,13,22,0.6)_15%,transparent_80%)] z-10 opacity-75 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--background)_10%,transparent_80%)] dark:bg-[radial-gradient(circle_at_center,rgba(9,13,22,0.6)_15%,transparent_80%)] z-10 opacity-60 dark:opacity-75 pointer-events-none" />
           {/* Bottom gradient transition to page background (only covering bottom quarter to prevent washing out the image) */}
           <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-background-luxe to-transparent z-10" />
         </div>
