@@ -300,27 +300,29 @@ export default function CheckoutWizard() {
                             : "bg-white/40 dark:bg-slate-950/20 border-slate-200 dark:border-white/5 hover:border-slate-350 dark:hover:border-white/10"
                         }`}
                       >
-                        <div className="flex items-start gap-4">
-                          <div className={`mt-2.5 rounded-full p-0.5 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-600"} flex-shrink-0`}>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <div className={`mt-1.5 rounded-full p-0.5 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-600"} flex-shrink-0`}>
                             <Check className="w-4 h-4" />
                           </div>
                           
-                          {/* Excursion Card Image */}
-                          <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
-                            <Image
-                              src={ex.image}
-                              alt={ex.name}
-                              fill
-                              sizes="64px"
-                              className="object-cover transition-transform duration-500 hover:scale-105"
-                            />
-                          </div>
+                          <div className="flex flex-col sm:flex-row items-start gap-3.5">
+                            {/* Excursion Card Image */}
+                            <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
+                              <Image
+                                src={ex.image}
+                                alt={ex.name}
+                                fill
+                                sizes="64px"
+                                className="object-cover transition-transform duration-500 hover:scale-105"
+                              />
+                            </div>
 
-                          <div className="flex flex-col">
-                            <span className="font-serif text-sm font-bold text-slate-800 dark:text-white">{ex.name}</span>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 font-sans mt-1 leading-relaxed max-w-md">
-                              {ex.description}
-                            </p>
+                            <div className="flex flex-col">
+                              <span className="font-serif text-sm font-bold text-slate-800 dark:text-white">{ex.name}</span>
+                              <p className="text-xs text-slate-600 dark:text-slate-400 font-sans mt-1 leading-relaxed max-w-md">
+                                {ex.description}
+                              </p>
+                            </div>
                           </div>
                         </div>
 
@@ -396,7 +398,7 @@ export default function CheckoutWizard() {
                   </div>
 
                   <div className="flex flex-col gap-4 relative z-10">
-                    <span className="font-mono text-lg md:text-xl tracking-widest font-semibold text-white">
+                    <span className="font-mono text-sm sm:text-base md:text-xl tracking-widest font-semibold text-white">
                       {paymentInfo.cardNumber || "•••• •••• •••• ••••"}
                     </span>
 

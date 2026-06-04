@@ -109,7 +109,7 @@ export default function DestinationDetail({ params }: PageProps) {
         <div className="lg:col-span-2 flex flex-col gap-8">
           
           {/* Tab Navigation */}
-          <div className="flex border-b border-slate-200 dark:border-white/10 gap-6">
+          <div className="flex border-b border-slate-200 dark:border-white/10 gap-4 md:gap-6 overflow-x-auto scrollbar-none whitespace-nowrap pb-px">
             {[
               { id: "itinerary", name: "Day-by-Day Timeline" },
               { id: "excursions", name: "Premium Excursions" },
@@ -118,7 +118,7 @@ export default function DestinationDetail({ params }: PageProps) {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as "itinerary" | "excursions" | "gallery")}
-                className={`pb-4 text-sm uppercase tracking-wider font-bold transition-all relative cursor-pointer ${
+                className={`pb-4 text-xs sm:text-sm uppercase tracking-wider font-bold transition-all relative cursor-pointer flex-shrink-0 ${
                   activeTab === tab.id ? "text-secondary font-extrabold" : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
                 }`}
               >
@@ -253,34 +253,36 @@ export default function DestinationDetail({ params }: PageProps) {
                           : "bg-white/40 dark:bg-slate-950/10 border-slate-200 dark:border-white/5 hover:border-secondary/20 dark:hover:border-secondary/25 hover:bg-white/50 dark:hover:bg-slate-950/15 hover:shadow-lg hover:shadow-secondary/5 hover:scale-[1.01]"
                       }`}
                     >
-                      <div className="flex items-start gap-4">
-                        <div className={`mt-2.5 rounded-full p-0.5 transition-colors duration-300 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-650 group-hover:text-slate-550"} flex-shrink-0`}>
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className={`mt-1.5 rounded-full p-0.5 transition-colors duration-300 ${isSel ? "text-secondary" : "text-slate-400 dark:text-slate-650 group-hover:text-slate-550"} flex-shrink-0`}>
                           <CheckCircle2 className="w-5 h-5 fill-current text-white dark:text-[#090d16]" />
                         </div>
                         
-                        {/* Excursion Image Thumbnail */}
-                        <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
-                          <Image
-                            src={ex.image}
-                            alt={ex.name}
-                            fill
-                            sizes="64px"
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                        </div>
-
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-wrap leading-none">
-                            <span className={`font-serif text-sm font-bold leading-none transition-colors duration-300 ${
-                              isSel ? "text-secondary" : "text-slate-800 dark:text-white group-hover:text-secondary"
-                            }`}>{ex.name}</span>
-                            <span className="text-[9px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-250 dark:border-white/5">
-                              {ex.duration}
-                            </span>
+                        <div className="flex flex-col sm:flex-row items-start gap-3.5">
+                          {/* Excursion Image Thumbnail */}
+                          <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 flex-shrink-0 bg-slate-900">
+                            <Image
+                              src={ex.image}
+                              alt={ex.name}
+                              fill
+                              sizes="64px"
+                              className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
                           </div>
-                          <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed mt-1.5 max-w-lg">
-                            {ex.description}
-                          </p>
+
+                          <div className="flex flex-col">
+                            <div className="flex items-center gap-2 flex-wrap leading-none">
+                              <span className={`font-serif text-sm font-bold leading-none transition-colors duration-300 ${
+                                isSel ? "text-secondary" : "text-slate-800 dark:text-white group-hover:text-secondary"
+                              }`}>{ex.name}</span>
+                              <span className="text-[9px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-250 dark:border-white/5">
+                                {ex.duration}
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed mt-1.5 max-w-lg">
+                              {ex.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
 

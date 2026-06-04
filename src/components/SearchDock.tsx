@@ -42,11 +42,11 @@ export const SearchDock: React.FC<SearchDockProps> = ({ variant = "inline" }) =>
       onSubmit={handleSearchSubmit}
       className={`w-full ${
         variant === "floating"
-          ? "glass-panel max-w-4xl p-3 rounded-full shadow-2xl border-white/10"
+          ? "glass-panel max-w-4xl p-3 rounded-3xl lg:rounded-full shadow-2xl border-white/10"
           : "glass-panel p-4 md:p-6 rounded-3xl shadow-xl border-white/10"
       }`}
     >
-      <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-1.5 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row items-center gap-4 lg:gap-1.5 w-full">
         {/* Field 1: Destination Search */}
         <div className="flex items-center gap-3.5 px-4 py-3 bg-white/95 dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none flex-1 w-full transition-all duration-300 hover:border-slate-300 dark:hover:border-white/15 shadow-sm">
           <MapPin className="w-5 h-5 text-secondary flex-shrink-0" />

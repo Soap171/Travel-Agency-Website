@@ -161,10 +161,10 @@ export default function DestinationsCatalog() {
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="overflow-hidden border-t border-slate-200 dark:border-white/5 pt-4 flex flex-col md:flex-row gap-8 items-start justify-between w-full"
+                className="overflow-hidden border-t border-slate-200 dark:border-white/5 pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-start w-full"
               >
                 {/* Advanced Group 1: Style selector */}
-                <div className="flex flex-col gap-2.5 flex-1 min-w-[200px]">
+                <div className="flex flex-col gap-2.5 md:col-span-2 lg:col-span-1">
                   <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
                     Expedition Style
                   </span>
@@ -186,7 +186,7 @@ export default function DestinationsCatalog() {
                 </div>
 
                 {/* Advanced Group 2: Budget cap slider */}
-                <div className="flex flex-col gap-2 flex-1 max-w-sm w-full">
+                <div className="flex flex-col gap-2 w-full">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
                       Maximum Escrow Budget
@@ -210,7 +210,7 @@ export default function DestinationsCatalog() {
                 </div>
 
                 {/* Advanced Group 3: Duration cap slider */}
-                <div className="flex flex-col gap-2 flex-1 max-w-sm w-full">
+                <div className="flex flex-col gap-2 w-full">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
                       Maximum Expedition Days
@@ -295,7 +295,7 @@ export default function DestinationsCatalog() {
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-4 sm:p-6 flex flex-col flex-grow">
                     <span className="text-[10px] font-sans text-slate-550 uppercase tracking-widest font-bold mb-2">
                       {dest.style} &bull; {dest.durationDays} Days
                     </span>
@@ -327,7 +327,7 @@ export default function DestinationsCatalog() {
                       
                       <Link
                         href={`/destinations/${dest.slug}`}
-                        className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white font-bold uppercase tracking-widest text-[9px] group-hover:bg-secondary hover:!text-white dark:hover:!text-white transition-all duration-300 cursor-pointer"
+                        className="flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white font-bold uppercase tracking-widest text-[8px] sm:text-[9px] group-hover:bg-secondary hover:!text-white dark:hover:!text-white transition-all duration-300 cursor-pointer"
                       >
                         <span>Explore Details</span>
                         <Compass className="w-3 h-3 group-hover:rotate-45 transition-transform" />

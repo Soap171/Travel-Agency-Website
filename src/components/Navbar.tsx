@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* CTA / Quick Access Buttons */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             {/* Luxury Theme Toggler */}
             <button
               onClick={toggleTheme}
@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Hamburguer */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3">
             {/* Theme toggle for mobile */}
             <button
               onClick={toggleTheme}
@@ -191,7 +191,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 md:hidden bg-white/95 dark:bg-primary/95 backdrop-blur-2xl flex flex-col justify-center px-8 py-20"
+            className="fixed inset-0 z-40 lg:hidden bg-white/95 dark:bg-primary/95 backdrop-blur-2xl flex flex-col justify-center px-8 py-20 overflow-y-auto"
           >
             <div className="flex flex-col gap-6 items-center">
               {navLinks.map((link, index) => {

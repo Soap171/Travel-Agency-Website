@@ -134,7 +134,7 @@ export default function ClientDashboard() {
                     >
                       <div className="flex flex-col gap-1.5 leading-none min-w-0">
                         <span className="text-[9px] text-accent font-mono">{b.id}</span>
-                        <span className="font-serif text-sm font-bold text-slate-800 dark:text-white truncate max-w-[160px]">{b.destination.title}</span>
+                        <span className="font-serif text-sm font-bold text-slate-800 dark:text-white truncate max-w-[180px] sm:max-w-xs md:max-w-sm lg:max-w-[140px] xl:max-w-[190px]">{b.destination.title}</span>
                         <span className="text-[10px] text-slate-500 dark:text-slate-400 font-sans mt-0.5">{b.startDate} to {b.endDate}</span>
                       </div>
                       
