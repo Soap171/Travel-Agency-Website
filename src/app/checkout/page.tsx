@@ -260,7 +260,7 @@ export default function CheckoutWizard() {
                 <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-white/5">
                   <button
                     onClick={handleNext}
-                    className="px-6 py-2.5 rounded-full bg-secondary hover:bg-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-full bg-secondary hover:bg-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <span>Proceed to Add-ons</span>
                     <ChevronRight className="w-4 h-4" />
@@ -354,10 +354,10 @@ export default function CheckoutWizard() {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
+                <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
                   <button
                     onClick={prevStep}
-                    className="px-5 py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     <span>Back</span>
@@ -365,7 +365,7 @@ export default function CheckoutWizard() {
 
                   <button
                     onClick={handleNext}
-                    className="px-6 py-2.5 rounded-full bg-secondary hover:bg-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-full bg-secondary hover:bg-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <span>Proceed to Escrow</span>
                     <ChevronRight className="w-4 h-4" />
@@ -496,12 +496,12 @@ export default function CheckoutWizard() {
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
+                  <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
                     <button
                       type="button"
                       onClick={prevStep}
                       disabled={isProcessing}
-                      className="px-5 py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 cursor-pointer"
+                      className="w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -510,7 +510,7 @@ export default function CheckoutWizard() {
                     <button
                       type="submit"
                       disabled={isProcessing}
-                      className="px-6 py-2.5 rounded-full bg-gradient-to-r from-secondary to-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-full bg-gradient-to-r from-secondary to-secondary-light text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       {isProcessing ? (
                         <>

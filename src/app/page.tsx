@@ -88,7 +88,7 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 max-w-4xl leading-tight">
+          <h1 className="font-serif text-[clamp(1.75rem,5.5vw+0.25rem,4.5rem)] font-bold tracking-tight mb-4 sm:mb-6 max-w-4xl leading-tight">
             <BlurText
               text="The Ultimate Journey"
               delay={0.2}
@@ -105,7 +105,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mb-8 sm:mb-12"
+            className="text-[clamp(0.875rem,1.2vw+0.5rem,1.125rem)] text-slate-700 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mb-8 sm:mb-12"
           >
             Escape the ordinary. Immerse yourself in hand-curated luxury travel experiences, bespoke international holiday packages, and seamless itinerary booking.
           </motion.p>
