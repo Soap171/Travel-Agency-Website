@@ -92,7 +92,7 @@ export default function DestinationDetail({ params }: PageProps) {
             </div>
           </div>
 
-          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+          <h1 className="font-serif text-[clamp(1.75rem,5vw,3.75rem)] font-bold text-white tracking-tight leading-tight">
             {destination.title}
           </h1>
 
